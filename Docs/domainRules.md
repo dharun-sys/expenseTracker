@@ -24,3 +24,27 @@
 3. Variables  
    - No abbreviations like `amt`, `bal`
    - Use full names like `amount`, `balance`
+## 
+
+## This project is modular but **not independent**.
+
+Before writing code in any domain:
+
+1. must read:
+   - `Docs/architecture.md`
+   - `Docs/domainRules.md`
+   - The public interfaces of any module that is called
+
+2. If a method made by another dev is called / used:
+   - Read its implementation at least once
+   - Understand its assumptions and side effects
+
+3. Do NOT:
+   - Reimplement logic that already exists in another module / utility
+   - Guess how another service works
+   - Call internal/private methods across domains
+
+4. If behavior is unclear:
+   - Ask before coding
+   - Do not “make it work” by assumptions
+
