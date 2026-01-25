@@ -1,4 +1,4 @@
-# Payment Ledger
+# Payment Ledger System
 
 Backend-first payment system built around an append-only, double-entry ledger.
 
