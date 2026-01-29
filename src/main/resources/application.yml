@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ledger-service
+
+  profiles:
+    active: dev   # change to `local` when you want postgres
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
