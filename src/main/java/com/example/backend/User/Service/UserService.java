@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.backend.User.Model.UserDB;
 import com.example.backend.User.Repository.UserRepository;
-import com.example.backend.User.Dto.Userinput;
+import com.example.backend.User.Dto.UserInput;
 
 @Service
 public class UserService {
@@ -19,7 +19,7 @@ public class UserService {
         this.dataRepository = dataRepository;
     } 
 
-   public UserDB addcustomer(Userinput dto){
+   public UserDB addcustomer(UserInput dto){
 
         UserDB user = new UserDB();
         user.setName(dto.getName());

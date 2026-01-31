@@ -14,13 +14,9 @@ import java.util.UUID;
 public class PostingEntry {
 
     private UUID id;
-
     private String type;
-
     private String referenceId;
-
     private String status;
-
     private Instant occurredAt;
 
 }

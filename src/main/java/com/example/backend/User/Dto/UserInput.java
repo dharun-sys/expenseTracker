@@ -7,12 +7,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Data
-public class Userinput {
+@RequiredArgsConstructor
+public class UserInput {
     @NotBlank(message = "Name is required")
     private String name;
 
@@ -27,9 +28,6 @@ public class Userinput {
     @NotBlank(message ="status will be updated")
     private Boolean status;
 
-
-
-    
 
     
 }

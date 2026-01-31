@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.backend.User.Dto.Userinput;
+import com.example.backend.User.Dto.UserInput;
 import com.example.backend.User.Model.UserDB;
 import com.example.backend.User.Service.UserService;
 
@@ -19,7 +19,7 @@ import com.example.backend.User.Service.UserService;
 //
 public class UserController {
 
-    private UserService dataService;
+    private final UserService dataService;
 
     public UserController(UserService dataService)
     {
@@ -27,7 +27,7 @@ public class UserController {
     }
     
     @PostMapping("/adduser")
-    public UserDB adduser(@RequestBody Userinput dto)
+    public UserDB adduser(@RequestBody UserInput dto)
     {
         return dataService.addcustomer(dto);
     }

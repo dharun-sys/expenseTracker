@@ -38,6 +38,6 @@ public class JournalEntry {
             cascade = CascadeType.ALL,
             orphanRemoval = true // rollback child entries if parent is deleted
     )
-    private List<JournalLines> lines = new ArrayList<>();
+    private List<JournalLines> lines = new ArrayList<>(); // why ArrayList here??
 }
 
