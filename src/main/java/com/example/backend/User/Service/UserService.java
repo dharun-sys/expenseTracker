@@ -3,6 +3,7 @@ package com.example.backend.User.Service;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.example.backend.User.Model.UserDB;
@@ -10,14 +11,15 @@ import com.example.backend.User.Repository.UserRepository;
 import com.example.backend.User.Dto.UserInput;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository dataRepository;
+    private final UserRepository userRepository;
 
-    public UserService(UserRepository dataRepository)
-    {
-        this.dataRepository = dataRepository;
-    } 
+//    public UserService(UserRepository dataRepository)
+//    {
+//        this.dataRepository = dataRepository;
+//    }
 
    public UserDB addCustomer(UserInput dto){
 
@@ -27,17 +29,17 @@ public class UserService {
         user.setPhone(dto.getPhone());
         user.setStatus(dto.getStatus());
 
-        return dataRepository.save(user);
+        return userRepository.save(user);
     }
 
     public UserDB getCustomer(UUID id)
     {
-         return dataRepository.findById(id).orElse(null);
+         return userRepository.findById(id).orElse(null);
     }
 
-     public List<UserDB> allCustomers(UserDB userdata)
+     public List<UserDB> allCustomers()
     {
-        return dataRepository.findAll();
+        return userRepository.findAll();
     }
 
 

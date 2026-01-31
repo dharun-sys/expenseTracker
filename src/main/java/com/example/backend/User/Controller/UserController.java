@@ -3,6 +3,7 @@ package com.example.backend.User.Controller;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,31 +18,32 @@ import com.example.backend.User.Service.UserService;
 @RestController
 @RequestMapping("/Account")
 //
+@RequiredArgsConstructor
 public class UserController {
 
-    private final UserService dataService;
+    private final UserService userService;
 
-    public UserController(UserService dataService)
-    {
-        this.dataService = dataService;
-    }
+//    public UserController(UserService dataService)
+//    {
+//        this.dataService = dataService;
+//    }
     
     @PostMapping("/addUser")
     public UserDB adduser(@RequestBody UserInput userInput)
     {
-        return dataService.addCustomer(userInput);
+        return userService.addCustomer(userInput);
     }
 
     @GetMapping("/{id}")
     public UserDB getUser(@PathVariable UUID id)
     {
-        return dataService.getCustomer(id);
+        return userService.getCustomer(id);
     }
 
     @GetMapping("/allUsers")
-    public List<UserDB>allUsers(UserDB userdata)
+    public List<UserDB>allUsers()
     {
-        return dataService.allCustomers(userdata);
+        return userService.allCustomers();
     }
 
     
