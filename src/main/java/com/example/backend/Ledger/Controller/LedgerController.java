@@ -43,14 +43,14 @@ public class LedgerController {
         JournalEntry journalEntry = ledgerService.postEntry(entryId);
         return ResponseEntity.ok(journalEntry);
     }
-
-    @PostMapping("/entries/{entryId}/reverse")
-    public ResponseEntity<JournalEntry> reverseEntry(
-            @PathVariable UUID entryId,
-            @RequestParam String reason) {
-        JournalEntry reversalEntry = ledgerService.reverseEntry(entryId, reason);
-        return ResponseEntity.ok(reversalEntry);
-    }
+//
+//    @PostMapping("/entries/{entryId}/reverse")
+//    public ResponseEntity<JournalEntry> reverseEntry(
+//            @PathVariable UUID entryId,
+//            @RequestParam String reason) {
+//        JournalEntry reversalEntry = ledgerService.reverseEntry(entryId, reason);
+//        return ResponseEntity.ok(reversalEntry);
+//    }
 
     @GetMapping("/entries/{referenceId}")
     public ResponseEntity<JournalEntry> getEntryByReferenceId(@PathVariable String referenceId) {

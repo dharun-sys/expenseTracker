@@ -35,7 +35,7 @@ public interface LedgerService {
      * Reverses a posted journal entry by creating offsetting entries
      * Original entry remains for audit trail
      */
-    JournalEntry reverseEntry(UUID journalEntryId, String reason);
+//    JournalEntry reverseEntry(UUID journalEntryId, String reason);
 
     /**
      * Calculates current balance for an account based on posted entries

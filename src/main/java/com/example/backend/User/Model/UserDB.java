@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
-@Table(name = "accountdb") //accountDB
+@Table(name = "Userdb") //UserDB
 @NoArgsConstructor
 @Data
 @Builder

@@ -16,7 +16,7 @@ import com.example.backend.User.Model.UserDB;
 import com.example.backend.User.Service.UserService;
 
 @RestController
-@RequestMapping("/Account")
+@RequestMapping("/User")
 //
 @RequiredArgsConstructor
 public class UserController {

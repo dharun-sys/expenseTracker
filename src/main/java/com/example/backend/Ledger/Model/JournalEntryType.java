@@ -2,10 +2,10 @@ package com.example.backend.Ledger.Model;
 
 public enum JournalEntryType {
     TRANSFER,
-    PAYMENT,
+//    PAYMENT,
     DEPOSIT,
     WITHDRAWAL,
-    FEE,
-    REFUND,
-    ADJUSTMENT
+//    FEE,
+//    REFUND,
+//    ADJUSTMENT
 }

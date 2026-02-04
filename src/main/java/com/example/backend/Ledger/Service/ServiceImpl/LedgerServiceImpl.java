@@ -113,45 +113,45 @@ public class LedgerServiceImpl implements LedgerService {
         return result;
     }
 
-    @Override
-    public JournalEntry reverseEntry(UUID journalEntryId, String reason) {
-        JournalEntry originalEntry = journalEntryRepository.findById(journalEntryId)
-            .orElseThrow(() -> new LedgerException("Journal entry not found: " + journalEntryId));
-
-        if (originalEntry.getStatus() != JournalEntryStatus.POSTED) {
-            throw new LedgerException("Can only reverse posted journal entries: " + journalEntryId);
-        }
-
-        // Create reversal entry
-        JournalEntry reversalEntry = new JournalEntry();
-        reversalEntry.setType(originalEntry.getType());
-        reversalEntry.setReferenceId("REV-" + originalEntry.getReferenceId());
-        reversalEntry.setStatus(JournalEntryStatus.POSTED);
-        reversalEntry.setOccurredAt(Instant.now());
-
-        // Create offsetting lines (flip debit/credit)
-        for (JournalLines originalLine : originalEntry.getLines()) {
-            EntrySide reversalSide = originalLine.getSide() == EntrySide.DEBIT ?
-                EntrySide.CREDIT : EntrySide.DEBIT;
-
-            JournalLines reversalLine = new JournalLines(
-                originalLine.getAccountId(),
-                reversalEntry,
-                originalLine.getAmount(),
-                reversalSide
-            );
-            reversalEntry.addLine(reversalLine);
-        }
-
-        // Mark original as reversed
-        originalEntry.setStatus(JournalEntryStatus.REVERSED);
-        journalEntryRepository.save(originalEntry);
-
-        JournalEntry result = journalEntryRepository.save(reversalEntry);
-        log.info("Reversed journal entry {} with new entry {}", journalEntryId, result.getId());
-
-        return result;
-    }
+//    @Override
+//    public JournalEntry reverseEntry(UUID journalEntryId, String reason) {
+//        JournalEntry originalEntry = journalEntryRepository.findById(journalEntryId)
+//            .orElseThrow(() -> new LedgerException("Journal entry not found: " + journalEntryId));
+//
+//        if (originalEntry.getStatus() != JournalEntryStatus.POSTED) {
+//            throw new LedgerException("Can only reverse posted journal entries: " + journalEntryId);
+//        }
+//
+//        // Create reversal entry
+//        JournalEntry reversalEntry = new JournalEntry();
+//        reversalEntry.setType(originalEntry.getType());
+//        reversalEntry.setReferenceId("REV-" + originalEntry.getReferenceId());
+//        reversalEntry.setStatus(JournalEntryStatus.POSTED);
+//        reversalEntry.setOccurredAt(Instant.now());
+//
+//        // Create offsetting lines (flip debit/credit)
+//        for (JournalLines originalLine : originalEntry.getLines()) {
+//            EntrySide reversalSide = originalLine.getSide() == EntrySide.DEBIT ?
+//                EntrySide.CREDIT : EntrySide.DEBIT;
+//
+//            JournalLines reversalLine = new JournalLines(
+//                originalLine.getAccountId(),
+//                reversalEntry,
+//                originalLine.getAmount(),
+//                reversalSide
+//            );
+//            reversalEntry.addLine(reversalLine);
+//        }
+//
+//        // Mark original as reversed
+//        originalEntry.setStatus(JournalEntryStatus.REVERSED);
+//        journalEntryRepository.save(originalEntry);
+//
+//        JournalEntry result = journalEntryRepository.save(reversalEntry);
+//        log.info("Reversed journal entry {} with new entry {}", journalEntryId, result.getId());
+//
+//        return result;
+//    }
 
     @Override
     public Long getAccountBalance(UUID accountId) {
