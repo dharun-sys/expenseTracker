@@ -2,10 +2,7 @@ package com.example.backend.Ledger.Model;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -17,6 +14,7 @@ import java.util.UUID;
         }
 )
 @Data
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "journalEntry") // Avoid circular reference in toString
@@ -47,5 +45,6 @@ public class JournalLines {
         this.amount = amount;
         this.side = side;
     }
+
 }
 

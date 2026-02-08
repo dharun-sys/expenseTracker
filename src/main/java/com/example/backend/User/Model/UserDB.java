@@ -38,6 +38,7 @@ public class UserDB {
     @Column(nullable = false, unique =true,length = 15)
     private String phone;
 
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
