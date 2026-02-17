@@ -20,6 +20,7 @@ import java.util.UUID;
 @RequestMapping("/api/ledger")
 @RequiredArgsConstructor
 @Validated
+//@AllArgsConstructor
 public class LedgerController {
 
     private final LedgerService ledgerService;
